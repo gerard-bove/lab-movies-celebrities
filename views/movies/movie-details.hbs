@@ -1,0 +1,14 @@
+<h2>Movie details</h2>
+<form action="/movie/:id/delete" method="post">
+    <input type="text" id="identificador" name="identificador" value={{movie.id}}>
+    <button type="submit" >Delete Movie</button>
+</form>
+<p>TITLE: {{movie.title}}</p>
+<p>GENRE: {{movie.genre}}</p>
+<p>PLOT: {{movie.plot}}</p>
+<p>CAST:</p>
+<ul>
+    {{#each movie.cast}}
+        <li>Name: {{name}}, Occupation: {{occupation}}, Catch phrase: {{catchPhrase}}</li>
+    {{/each}}
+</ul>

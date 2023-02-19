@@ -6,3 +6,17 @@ body {
 a {
   color: #00b7ff;
 }
+
+.movies-estilo {
+  text-decoration: none;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.movies-estilo a {
+  color: black;
+}
+
+#identificador {
+  display: none;
+}

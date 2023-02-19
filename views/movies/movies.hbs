@@ -1,0 +1,8 @@
+<h2>Movies</h2>
+<a href="movie/create">Create a movie document</a>
+{{#each movies}}
+    <div class="movies-estilo">
+        <a href="/movie/{{_id}}">{{title}}</a>
+    </div>
+{{/each}}
+<a href="/">Back</a>

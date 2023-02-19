@@ -12,7 +12,7 @@ router.get("/", (req, res, next) => {
     .then(result => {
       res.render("celebrities/celebrities", {celebrities: result})
     })
-      
+    .catch((err) => console.log(err))      
 })
 
 router.post("/create", (req, res, next) => {
