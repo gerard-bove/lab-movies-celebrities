@@ -1,8 +1,8 @@
 <h2>Celebrities</h2>
-<a href="celebrities/create">Create a celebrity document</a>
-<div>
+<a href="celebrities/create" class="btn btn-primary">Create a celebrity document</a>
+<ul class="list-group m-2 w-50">
     {{#each celebrities}}
-        <p>{{name}}</p>
+        <li class="list-group-item"><a style="text-decoration: none; color: black" href="/celebrities/{{_id}}">{{name}}</a></li>
     {{/each}}
-</div>
-<a href="/">Back</a>
+</ul>
+<a class="mt-2 btn btn-primary" href="/">Back</a>

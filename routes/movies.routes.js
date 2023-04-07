@@ -30,6 +30,7 @@ router.post("/create", (req, res, next) => {
         .then(result => {
             res.redirect("/movie");
         })
+        .catch(err => console.log(err))
 })
 
 router.get("/:id", (req, res, next) => {
@@ -42,11 +43,30 @@ router.get("/:id", (req, res, next) => {
 })
 
 router.post("/:id/delete", (req, res, next) => {
-    console.log(req.body.identificador);
     Movie.findByIdAndRemove(req.body.identificador)
     .then(result => {
         res.redirect("/movie");
     })
     .catch(err => console.log(err));
 })
+
+router.get("/:id/edit", (req, res, next) => {
+    console.log(req.params.id)
+    Movie.findById(req.params.id)
+    .populate("cast")
+        .then(result => {
+            res.render("movies/edit-movie", {movie: result});
+        })
+})
+
+router.post("/:id/edit", (req, res, next) => {
+    const {title, genre, plot, cast} = req.body;
+    const {id} = req.params;
+    Movie.findByIdAndUpdate(id, {title, genre, plot, cast})
+    .then(result => {
+        res.redirect("/movie")
+    })
+    .catch(err => console.log(err))
+})
+
 module.exports = router;

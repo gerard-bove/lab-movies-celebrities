@@ -1,0 +1,10 @@
+<h2>Celebrity detail</h2>
+<form action="/celebrities/:id/delete" method="post">
+    <input type="text" id="identificador" name="identificador" value={{celebrity.id}}>
+    <button class="btn btn-primary" type="submit" >Delete Celebrity</button>
+</form>
+<p>NAME: {{celebrity.name}}</p>
+<p>OCCUPATION: {{celebrity.occupation}}</p>
+<p>CATCH PHRASE: {{celebrity.catchPhrase}}</p>
+<a class="mt-2 btn btn-primary" href="/celebrities/{{celebrity._id}}/edit">Edit</a>
+<a class="mt-2 btn btn-primary" href="/celebrities">Back</a>

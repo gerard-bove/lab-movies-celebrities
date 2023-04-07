@@ -26,8 +26,41 @@ router.post("/create", (req, res, next) => {
       res.redirect("/celebrities")
     })
     .catch(err => res.render("celebrities/new-celebrity"))
-  
 })
 
+router.get("/:id", (req, res, next) => {
+  const { id } = req.params;
+  Celebrity.findById(id)
+  .then(result => {
+    res.render("celebrities/celebrities-detail", {celebrity: result})
+  })
+})
+
+router.get("/:id/edit", (req, res, next) => {
+  const { id } = req.params;
+  Celebrity.findById(id)
+  .then(result => {
+    res.render("celebrities/edit-celebrity", {celebrity: result})
+  })
+  .catch(err => console.log(err))
+})
+
+router.post("/:id/edit", (req, res, next) => {
+  const { id } = req.params;
+  const { name, occupation, catchPhrase } = req.body;
+  Celebrity.findByIdAndUpdate(id, { name, occupation, catchPhrase })
+  .then(result => {
+    res.redirect("/celebrities")
+  })
+  .catch(err => console.log(err))
+})
+
+router.post("/:id/delete", (req, res, next) => {
+  const { identificador } = req.body;
+  Celebrity.findByIdAndRemove(identificador)
+  .then(() => {
+    res.redirect("/celebrities")
+  })
+})
 
 module.exports = router;
